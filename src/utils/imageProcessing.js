@@ -48,8 +48,8 @@ export const getCroppedImg = async (imageSrc, pixelCrop, frameSrc) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
-    canvas.width = 192;
-    canvas.height = 192;
+    canvas.width = 640;
+    canvas.height = 640;
 
     // Draw user image
     // pixelCrop gives { x, y, width, height } of the source image that should be visible
@@ -62,14 +62,14 @@ export const getCroppedImg = async (imageSrc, pixelCrop, frameSrc) => {
         pixelCrop.height,
         0,
         0,
-        192,
-        192
+        640,
+        640
     );
 
     // Draw frame on top
     if (frameSrc) {
         const frame = await createImage(frameSrc);
-        ctx.drawImage(frame, 0, 0, 192, 192);
+        ctx.drawImage(frame, 0, 0, 640, 640);
     }
 
     return new Promise((resolve) => {
